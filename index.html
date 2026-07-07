@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>brAInly - AI Supported Learning Assistant for Autism (Prototype)</title>
+  <!-- Google Fonts Outfit & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Stylesheet link -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div id="dashboard-container">
+    
+    <!-- LEFT PANEL: SMARTPHONE EMBEDDED PREVIEW -->
+    <div class="simulator-panel">
+      <div class="smartphone-shell">
+        <div class="phone-speaker"></div>
+        
+        <!-- Interactive Smartphone Screen -->
+        <div class="phone-screen">
+          
+          <!-- Shared Status Bar (Top of device) -->
+          <div class="phone-status-bar" id="phone-top-status">
+            <span id="phone-clock">14:55</span>
+            <div class="status-right">
+              <!-- Network Icon -->
+              <svg class="status-icon" viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L4.35 19.4c-.39.39-.39 1.02 0 1.41.39.39 1.02.39 1.41 0l1.9-1.9C9.17 19.58 10.53 20 12 20c4.97 0 9-4.03 9-9s-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+              <!-- Battery Icon -->
+              <svg class="status-icon" viewBox="0 0 24 24"><path d="M17 5H7c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-1 11H8V8h8v8z"/></svg>
+            </div>
+          </div>
+
+          <!-- Virtual Keyboard Simulation overlay -->
+          <div class="phone-keyboard-area" id="simulated-keyboard">
+            <div style="background-color:#e2e8f0; height: 32px; display:flex; justify-content:flex-end; align-items:center; padding: 0 12px; border-bottom: 1px solid #cbd5e1;">
+              <button onclick="document.getElementById('simulated-keyboard').style.height='0'" style="background:none; border:none; color:var(--primary); font-weight:700; cursor:pointer; font-size:13px;">Done</button>
+            </div>
+            <div style="padding:12px; display:grid; grid-template-columns: repeat(10, 1fr); gap: 4px; background-color:#d1d5db;">
+              <!-- Simulated Key letters -->
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">Q</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">W</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">E</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">R</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">T</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">Y</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">U</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">I</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">O</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">P</span>
+            </div>
+            <div style="padding:0 24px 12px 24px; display:grid; grid-template-columns: repeat(9, 1fr); gap: 4px; background-color:#d1d5db;">
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">A</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">S</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">D</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">F</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">G</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">H</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">J</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">K</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">L</span>
+            </div>
+            <div style="padding:0 12px 12px 12px; display:grid; grid-template-columns: 1.2fr repeat(7, 1fr) 1.2fr; gap: 4px; background-color:#d1d5db;">
+              <span style="background:#acb3ba; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:700; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">⇧</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">Z</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">X</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">C</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">V</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">B</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">N</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">M</span>
+              <span style="background:#acb3ba; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:700; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">⌫</span>
+            </div>
+            <div style="padding:0 12px 12px 12px; display:grid; grid-template-columns: 1.5fr 4.5fr 2fr; gap: 6px; background-color:#d1d5db;">
+              <span style="background:#acb3ba; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">123</span>
+              <span style="background:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:600; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">space</span>
+              <span style="background:#3b82f6; color:white; border-radius:4px; text-align:center; padding: 6px 0; font-size:13px; font-weight:700; box-shadow:0 1px 0.5px rgba(0,0,0,0.3)">Go</span>
+            </div>
+          </div>
+
+          <!-- Screens Wrapper area -->
+          <div class="screen-wrapper">
+
+            <!-- 1. WELCOME SCREEN -->
+            <div id="scr-welcome" class="app-screen welcome-screen no-nav active">
+              <div class="welcome-logo">
+                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+              </div>
+              <h1 class="welcome-title">brAInly</h1>
+              <p class="welcome-subtitle">Autism Learning Assistant</p>
+              <p class="welcome-desc">Supporting daily routines, visual learning, and social skills development.</p>
+              
+              <div style="width: 100%; padding: 0 40px; margin-top: 10px;">
+                <button class="btn btn-primary" data-goto="scr-login">Get Started</button>
+              </div>
+            </div>
+
+            <!-- 2. LOGIN SCREEN -->
+            <div id="scr-login" class="app-screen no-nav">
+              <div class="screen-content" style="justify-content: center;">
+                <div class="auth-header">
+                  <h2>Welcome Back!</h2>
+                  <p>Log in to manage child learning progress</p>
+                </div>
+                
+                <div class="form-group">
+                  <label for="ip-login-email">Email Address</label>
+                  <input type="email" id="ip-login-email" class="form-input" placeholder="parent@example.com" value="demo@brainly.edu">
+                </div>
+                <div class="form-group">
+                  <label for="ip-login-password">Password</label>
+                  <input type="password" id="ip-login-password" class="form-input" placeholder="••••••••" value="demo1234">
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px; width:100%;">
+                  <button class="btn btn-primary" id="btn-login-submit">Login</button>
+                  <button class="btn btn-secondary" id="btn-demo-submit">Continue as Demo User</button>
+                  <button class="btn btn-outline" data-goto="scr-signup">Create Account</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. SIGN UP SCREEN -->
+            <div id="scr-signup" class="app-screen no-nav">
+              <div class="screen-content" style="justify-content: center;">
+                <div class="auth-header">
+                  <h2>Create Account</h2>
+                  <p>Join as a parent or teacher</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-signup-name">Full Name</label>
+                  <input type="text" id="ip-signup-name" class="form-input" placeholder="Alex Johnson">
+                </div>
+                <div class="form-group">
+                  <label for="ip-signup-email">Email Address</label>
+                  <input type="email" id="ip-signup-email" class="form-input" placeholder="alex@example.com">
+                </div>
+                <div class="form-group">
+                  <label for="ip-signup-password">Password</label>
+                  <input type="password" id="ip-signup-password" class="form-input" placeholder="••••••••">
+                </div>
+                <div class="form-group">
+                  <label for="ip-signup-role">My Role</label>
+                  <select id="ip-signup-role" class="form-select">
+                    <option value="Parent">Parent</option>
+                    <option value="Teacher">Teacher / Therapist</option>
+                  </select>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:12px; margin-top:12px; width:100%;">
+                  <button class="btn btn-primary" id="btn-signup-submit">Create Account</button>
+                  <button class="btn btn-outline" data-goto="scr-login">Already have an account? Login</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- 4. CHILD PROFILE SETUP SCREEN -->
+            <div id="scr-profile-setup" class="app-screen no-nav">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-signup">←</button>
+                <h1>Child Profile</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                <div style="text-align:center; margin-bottom:20px;">
+                  <div style="font-size:48px; background:var(--primary-light); width:80px; height:80px; border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 12px auto; color:var(--primary)">🧒</div>
+                  <h2 style="font-size:18px; font-weight:800;">Let's setup details</h2>
+                  <p style="font-size:13px; color:var(--text-medium); margin-top:4px;">Customize learning cards and tasks below.</p>
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-child-name">Child Name</label>
+                  <input type="text" id="ip-child-name" class="form-input" placeholder="Adam" value="Adam">
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-child-age">Age</label>
+                  <input type="number" id="ip-child-age" class="form-input" placeholder="6" value="6" min="1" max="18">
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-child-level">Support Level</label>
+                  <select id="ip-child-level" class="form-select">
+                    <option value="Beginner">Beginner (requires visual support)</option>
+                    <option value="Intermediate">Intermediate (requires text & visual)</option>
+                    <option value="Advanced">Advanced (self-sufficient planner)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-child-focus">Main Focus area</label>
+                  <select id="ip-child-focus" class="form-select">
+                    <option value="Daily Routine">Daily Routine Tasks</option>
+                    <option value="Emotions">Emotion Definitions</option>
+                    <option value="Social Skills">Social Skills / Scenarios</option>
+                    <option value="General Learning">General Visual Learning</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="ip-child-notes">Optional Notes</label>
+                  <textarea id="ip-child-notes" class="form-input" style="height:80px; resize:none;" placeholder="Visual routines keep focus..."></textarea>
+                </div>
+
+                <button class="btn btn-primary" id="btn-save-profile" style="margin-top:12px;">Save Child Profile</button>
+              </div>
+            </div>
+
+            <!-- 5. HOME DASHBOARD -->
+            <div id="scr-home" class="app-screen">
+              <div class="screen-content">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:14px;">
+                  <div>
+                    <h2 class="user-greeting">Welcome, <span class="lbl-child-name">Adam</span>!</h2>
+                    <p class="user-sub">Today's Learning Journey</p>
+                  </div>
+                  <div style="font-size:32px;">😊</div>
+                </div>
+
+                <!-- 4 Feature Cards -->
+                <div class="feature-grid">
+                  <!-- Card 1: Daily Routine -->
+                  <div class="feature-card feat-routine" data-goto="scr-routine">
+                    <div class="feat-icon">
+                      <svg viewBox="0 0 24 24"><path d="M9 16.2L4.8 12l-1.4 1.4L9 19 21 7l-1.4-1.4L9 16.2z"/></svg>
+                    </div>
+                    <h3>Daily Routine</h3>
+                    <p>Daily routines, tooth brushing, hygiene.</p>
+                  </div>
+                  <!-- Card 2: Learning Cards -->
+                  <div class="feature-card feat-cards" data-goto="scr-learning-cards">
+                    <div class="feat-icon">
+                      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"/></svg>
+                    </div>
+                    <h3>Learning Cards</h3>
+                    <p>Learn emotions, colors, animals.</p>
+                  </div>
+                  <!-- Card 3: Social Scenarios -->
+                  <div class="feature-card feat-social" data-goto="scr-social-scenarios">
+                    <div class="feat-icon">
+                      <svg viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+                    </div>
+                    <h3>Scenarios</h3>
+                    <p>Practice greetings and classrooms.</p>
+                  </div>
+                  <!-- Card 4: Progress -->
+                  <div class="feature-card feat-progress" data-goto="scr-progress">
+                    <div class="feat-icon">
+                      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                    </div>
+                    <h3>My Progress</h3>
+                    <p>View routine metrics and scores.</p>
+                  </div>
+                </div>
+
+                <!-- AI Suggestion Card -->
+                <div class="ai-recommendation-card" data-goto="scr-ai">
+                  <div class="ai-header-pill">AI Guidance</div>
+                  <h4 id="txt-db-routine-title">Daily Suggestion</h4>
+                  <p id="txt-db-routine-suggestion">Practice one emotion card and complete two routine tasks.</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- 6. DAILY ROUTINE SCREEN -->
+            <div id="scr-routine" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>Daily Routines</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                <div id="routine-progress-sec" style="margin-bottom: 20px;">
+                  <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:700; color:var(--text-medium);">
+                    <span id="routine-progress-text">Daily Routine Progress: 0 / 10 completed</span>
+                  </div>
+                  <div class="list-progress-bar">
+                    <div class="list-progress-fill" id="routine-progress-fill"></div>
+                  </div>
+                </div>
+
+                <div class="activity-list" id="routine-list-container">
+                  <!-- Routine cards loaded dynamically by javascript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 7. ROUTINE ACTIVITY DETAIL SCREEN -->
+            <div id="scr-routine-detail" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-routine">←</button>
+                <h1 id="lbl-routine-detail-title">Routine Detail</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content" id="routine-detail-screen-content">
+                <!-- Dynamically populated via app.js -->
+              </div>
+            </div>
+
+            <!-- 8. LEARNING CARDS SCREEN -->
+            <div id="scr-learning-cards" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>Learning Cards</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content" style="padding: 16px;">
+                <!-- Category Slides bar -->
+                <div class="category-pills">
+                  <div class="category-pill active" data-category="All">All</div>
+                  <div class="category-pill" data-category="Emotions">Emotions</div>
+                  <div class="category-pill" data-category="Colors">Colors</div>
+                  <div class="category-pill" data-category="Animals">Animals</div>
+                  <div class="category-pill" data-category="Everyday Objects">Objects</div>
+                  <div class="category-pill" data-category="School Materials">School</div>
+                  <div class="category-pill" data-category="Family Members">Family</div>
+                </div>
+
+                <div class="cards-grid" id="learning-cards-container">
+                  <!-- Learning Cards loaded by javascript -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 9. LEARNING CARD QUIZ SCREEN -->
+            <div id="scr-learning-quiz" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-learning-cards">←</button>
+                <h1>Practice Card</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content" id="learning-quiz-screen-content">
+                <!-- Populated dynamically via app.js -->
+              </div>
+            </div>
+
+            <!-- 10. SOCIAL SCENARIOS SCREEN -->
+            <div id="scr-social-scenarios" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>Social Scenarios</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                <div style="font-size:13px; color:var(--text-medium); margin-bottom:16px; text-align:center;">
+                  Select a social scenario to practice communication.
+                </div>
+                <div class="activity-list" id="social-scenarios-container">
+                  <!-- Social tasks loaded by script -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 11. SOCIAL SCENARIO QUIZ SCREEN -->
+            <div id="scr-social-quiz" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-social-scenarios">←</button>
+                <h1>Social Practice</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content" id="social-quiz-screen-content">
+                <!-- Populated dynamically via app.js -->
+              </div>
+            </div>
+
+            <!-- 12. PROGRESS DASHBOARD SCREEN -->
+            <div id="scr-progress" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>My Progress</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                
+                <!-- Overall metrics circular info block -->
+                <div class="overall-progress-box">
+                  <div>
+                    <h3 style="font-size: 16px; font-weight:700;">Overall Progress</h3>
+                    <p style="color:var(--text-medium); font-size:12px; margin-top:2px;">Committed learning items</p>
+                  </div>
+                  <div class="radial-progress-dummy" id="progress-circle-dummy">
+                    <span class="radial-progress-text" id="txt-progress-overall-pct">0%</span>
+                  </div>
+                </div>
+
+                <!-- Stats by categories -->
+                <div class="stats-card-group">
+                  <!-- Daily Routines -->
+                  <div class="stat-item">
+                    <div class="stat-header">
+                      <span>Daily Routines Task completion</span>
+                      <span id="lbl-stat-routines">0 / 10</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill stat-fill-blue" id="fill-stat-routines"></div>
+                    </div>
+                  </div>
+                  <!-- Learning Cards -->
+                  <div class="stat-item">
+                    <div class="stat-header">
+                      <span>Learning Cards Quizzed items</span>
+                      <span id="lbl-stat-cards">0 / 20</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill stat-fill-purple" id="fill-stat-cards"></div>
+                    </div>
+                  </div>
+                  <!-- Social Scenarios -->
+                  <div class="stat-item">
+                    <div class="stat-header">
+                      <span>Social Scenario exercises</span>
+                      <span id="lbl-stat-scenarios">0 / 10</span>
+                    </div>
+                    <div class="stat-bar">
+                      <div class="stat-fill stat-fill-green" id="fill-stat-scenarios"></div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Full Summary stats -->
+                <div class="card" style="margin-bottom: 20px; background-color: var(--bg-canvas);">
+                  <div style="display:flex; justify-content:space-between; font-size:14px; font-weight:700;">
+                    <span>Completed items (Total)</span>
+                    <span id="lbl-stat-total" style="color:var(--primary-dark)">0 / 40</span>
+                  </div>
+                </div>
+
+                <button class="btn btn-primary" data-goto="scr-ai">View AI Suggestions</button>
+
+              </div>
+            </div>
+
+            <!-- 13. AI SUGGESTIONS SCREEN -->
+            <div id="scr-ai" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>AI Suggestions</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                <div style="background-color: var(--primary-light); color: var(--primary-dark); padding:16px; border-radius:var(--radius-md); font-size:13px; line-height:1.4; font-weight:600; margin-bottom:16px;">
+                   Based on today’s activities, <span class="lbl-child-name">Adam</span> completed routine tasks successfully but may need more practice with emotion cards.
+                </div>
+
+                <div id="ai-suggestions-list" style="display:flex; flex-direction:column; gap:12px; margin-bottom:20px;">
+                  <!-- suggestions filled via script -->
+                </div>
+
+                <div style="background-color:var(--accent-red-light); border:1px solid var(--accent-red); color:var(--text-medium); font-size:11px; padding:12px; border-radius:var(--radius-md); line-height:1.4; text-align:center; font-style:italic; margin-bottom:20px;">
+                   brAInly is not a diagnosis or treatment tool. It provides educational and daily life support only.
+                </div>
+
+                <button class="btn btn-primary" data-goto="scr-home">Back to Home</button>
+              </div>
+            </div>
+
+            <!-- 14. PROFILE / SETTINGS SCREEN -->
+            <div id="scr-settings" class="app-screen">
+              <div class="screen-header">
+                <button class="back-btn" data-goto="scr-home">←</button>
+                <h1>Profile Settings</h1>
+                <div class="header-right"></div>
+              </div>
+              <div class="screen-content">
+                
+                <!-- Child Profile Summary -->
+                <div class="profile-info-card">
+                  <div class="profile-avatar-dummy">🧑</div>
+                  <div id="set-child-details" style="font-size:13px; color:var(--text-medium); line-height:1.4;">
+                    <!-- Filled by script -->
+                  </div>
+                </div>
+
+                <h3 style="font-size: 14px; font-weight:700; color:var(--text-medium); margin: 12px 0 6px 0;">Preferences</h3>
+                <div style="display:flex; flex-direction:column; margin-bottom: 24px;">
+                  <div class="toggle-setting-row">
+                    <span>Visual Support Details</span>
+                    <label class="switch">
+                      <input type="checkbox" id="pref-visual" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-setting-row">
+                    <span>Audio Voice Support</span>
+                    <label class="switch">
+                      <input type="checkbox" id="pref-audio">
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                  <div class="toggle-setting-row">
+                    <span>Text Support Guide</span>
+                    <label class="switch">
+                      <input type="checkbox" id="pref-text" checked>
+                      <span class="slider"></span>
+                    </label>
+                  </div>
+                </div>
+
+                <div style="display:flex; flex-direction:column; gap:12px;">
+                  <button class="btn btn-primary" id="btn-edit-profile">Edit Child Profile</button>
+                  <button class="btn btn-outline" id="btn-logout" style="border-color:var(--accent-red); color:var(--accent-red)">Logout</button>
+                </div>
+
+              </div>
+            </div>
+
+          </div> <!-- End Screens Wrapper -->
+
+          <!-- Shared Global Device Navigation Bar -->
+          <div class="bottom-nav" id="app-bottom-nav">
+            <a href="#" class="bottom-nav-item" data-nav="home">
+              <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+              <span>Home</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-nav="activities">
+              <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0-2-.9-2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
+              <span>Activities</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-nav="progress">
+              <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+              <span>Progress</span>
+            </a>
+            <a href="#" class="bottom-nav-item" data-nav="profile">
+              <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+              <span>Profile</span>
+            </a>
+          </div>
+
+          <div class="iphone-bar"></div>
+        </div> <!-- End Phone Screen -->
+      </div>
+    </div> <!-- END LEFT PANEL -->
+
+    <!-- RIGHT PANEL: LIVE DB INSPECTOR -->
+    <div class="inspector-panel">
+      <button class="help-pill" id="help-pill">DEMO MANUAL</button>
+      
+      <div class="inspector-header">
+        <h2>
+          <!-- Fire icon placeholder -->
+          <svg viewBox="0 0 24 24"><path d="M13.5.67s.74 2.65.74 4.8c0 2.06-1.35 3.73-3.41 3.73-2.07 0-3.63-1.67-3.63-3.73l.03-.36C5.21 6.51 4 9.1 4 12c0 4.42 3.58 8 8 8s8-3.58 8-8c0-4.04-2.5-7.5-6.5-11.33zM12 18c-2.21 0-4-1.79-4-4 0-1.4.72-2.63 1.8-3.35.34-.23.49-.66.35-1.05-.18-.5-.28-1.04-.28-1.6 0-1.27.67-2.4 1.67-3.04.36-.23.84-.2.1 1.25.9 1.13.9 3.01 0 4.14-1.12 1.13-2.93 1.13-4.05 0-1.69-1.69-1.69-4.44 0-6.13.43-.43.91-.79 1.43-1.08.38-.21.84.14.71.56-.47 1.49-.07 3.12 1.07 4.26 1.76 1.76 4.6 1.76 6.36 0 1.14-1.14 1.54-2.77 1.07-4.26-.13-.42.33-.77.71-.56.52.28 1 .65 1.43 1.08 1.69 1.69 1.69 4.44 0 6.13H12c-2.21 0-4 1.79-4 4z"/></svg>
+          Firestore State Inspector
+        </h2>
+        <button class="inspector-reset-btn" id="btn-inspector-reset">Clear State</button>
+      </div>
+
+      <!-- Db Collection tabs -->
+      <div class="db-tabs">
+        <span class="db-tab active" data-col="childProfile">childProfile</span>
+        <span class="db-tab" data-col="routineTasks">routineTasks</span>
+        <span class="db-tab" data-col="learningCards">learningCards</span>
+        <span class="db-tab" data-col="cardResult">cardResult</span>
+        <span class="db-tab" data-col="socialScenarios">socialScenarios</span>
+        <span class="db-tab" data-col="scenarioResult">scenarioResult</span>
+        <span class="db-tab" data-col="progressData">progressData</span>
+        <span class="db-tab" data-col="aiRecommendations">aiRecommendations</span>
+        <span class="db-tab" data-col="appState">appState</span>
+      </div>
+
+      <!-- Live JSON Code preview container -->
+      <div class="db-content" id="db-inspector-content">
+        <!-- Rendered Code goes here -->
+      </div>
+
+      <!-- Explanation label -->
+      <div class="db-schema-info" id="db-schema-label">
+        Firestore collections model matches Firestore paths.
+      </div>
+    </div> <!-- END RIGHT PANEL -->
+
+  </div> <!-- End Master Container -->
+
+  <!-- HELP OVERLAY MODAL -->
+  <div class="help-overlay" id="help-overlay">
+    <div class="help-card">
+      <h3>brAInly Prototype Flow Instructions</h3>
+      <p style="margin-bottom:14px; font-size:13px; color:#94a3b8; line-height:1.4">This dashboard simulates client actions and maps them in real-time to your Cloud Firestore structure on the right side. Follow these steps for your live presentation demo:</p>
+      <ol>
+        <li>Click <strong>Get Started</strong> on the Welcome Screen.</li>
+        <li>Click <strong>Continue as Demo User</strong> on the Login Screen.</li>
+        <li>On the Home Dashboard, notice the greeting and progress elements. Click the <strong>Daily Routine</strong> card.</li>
+        <li>Click <strong>Brush Teeth</strong> task, view the steps, and click <strong>Mark as Completed</strong>. Check the live updates in the Firestore Console (especially on the <i>routineTasks</i> and <i>progressData</i> collections).</li>
+        <li>Open <strong>Learning Cards</strong> from the bottom navigation or Dashboard, select the <strong>Apple</strong> object card, solve the quiz, and observer progress.</li>
+        <li>Open <strong>Social Scenarios</strong>, play the <strong>Greeting Others</strong> scenario, select <i>Say hello back</i>, and confirm success.</li>
+        <li>View the updated scores on the <strong>My Progress</strong> dashboard page.</li>
+        <li>View recommendations on the <strong>AI Suggestions</strong> page.</li>
+      </ol>
+      <button id="btn-close-help">Got it</button>
+    </div>
+  </div>
+
+  <!-- Loading script -->
+  <script src="app.js"></script>
+</body>
+</html>
