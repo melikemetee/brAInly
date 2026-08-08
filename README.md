@@ -112,7 +112,7 @@ No external database is required for the current MVP.
 
 ## 🚀 Live Demo
 
-### [🌐 Launch brAInly Live Demo](https://melikemetee.github.io/brAInly_project/)
+### [🌐 Launch brAInly Live Demo](https://melikemetee.github.io/brAInly/)
 
 The application is deployed using **GitHub Pages**.
 
@@ -234,10 +234,10 @@ The long-term vision is to evolve the current MVP into a more comprehensive AI-s
 ## 📌 Project Links
 
 🔗 **GitHub Repository:**
-https://github.com/melikemetee/brAInly_project
+https://github.com/melikemetee/brAInly
 
 🔗 **Live Demo:**
-https://melikemetee.github.io/brAInly_project/
+ https://melikemetee.github.io/brAInly/
 
 ---
 
