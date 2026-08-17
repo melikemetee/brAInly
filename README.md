@@ -183,7 +183,7 @@ This project was collaboratively developed by:
 
 The project was developed in four stages.
 
-### Week 1 – Planning & Design
+### Week 1 – Planning & Design (Behice Nur Alemdar)
 
 * Defined project scope
 * Determined core features
@@ -191,13 +191,13 @@ The project was developed in four stages.
 * Designed logo and color palette
 * Prepared educational content
 
-### Week 2 – Prototype Development
+### Week 2 – Prototype Development (Zeynep Sude Çoban)
 
 * Developed login and home screens
 * Created profile, routine, learning cards and social scenarios
 * Implemented page navigation
 
-### Week 3 – Data & AI
+### Week 3 – Data & AI (Melike Mete)
 
 * Implemented routine completion
 * Added correct/incorrect answer system
@@ -205,7 +205,7 @@ The project was developed in four stages.
 * Developed rule-based recommendations
 * Added demo data
 
-### Week 4 – Testing & Presentation
+### Week 4 – Testing & Presentation (Açelya Ela Öztürk) 
 
 * Fixed bugs
 * Improved the user interface
